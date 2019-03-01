@@ -26,10 +26,10 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
 
     }
 
-    @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        return null;
-    }
+//    @Override
+//    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+//        return null;
+//    }
 
     @Override
     protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) throws AuthenticationException {
@@ -40,10 +40,7 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
            throw new RuntimeException("JWT Token is incorrect");
        }
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList(jwtUser.getRole());
-       new JwtUserDetails(jwtUser.getUserName(),jwtUser.getId(),
-               token,
-               grantedAuthorities);
-        return null;
+       return new JwtUserDetails(jwtUser.getUserName(),jwtUser.getId(),token,grantedAuthorities);
     }
 
     @Override
