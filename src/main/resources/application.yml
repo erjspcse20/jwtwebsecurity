@@ -1,0 +1,9 @@
+management:
+  secutity:
+    enabled: true
+
+
+spring:
+  resources:
+    chain:
+      enabled: true
